@@ -10,7 +10,7 @@
     <style>
         .hero-gradient {
             background: linear-gradient(135deg, rgba(0,0,0,0.7), rgba(0,0,0,0.5)), 
-                        url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 800"><defs><linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" style="stop-color:%23f59e0b;stop-opacity:0.3" /><stop offset="50%" style="stop-color:%23d97706;stop-opacity:0.4" /><stop offset="100%" style="stop-color:%2392400e;stop-opacity:0.5" /></linearGradient></defs><rect width="1200" height="800" fill="url(%23bg)"/><path d="M0,400 Q300,200 600,400 T1200,400 L1200,800 L0,800 Z" fill="%23059669" opacity="0.7"/></svg>');
+                        url('https://images.unsplash.com/photo-1470252649378-9c29740c9fa8?fm=jpg&q=60&w=3000&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8bmF0dXJlJTIwbW9ybmluZ3xlbnwwfHwwfHx8MA%3D%3D');
             background-size: cover;
             background-position: center;
         }
@@ -48,8 +48,8 @@
         
         <div class="navbar-center hidden lg:flex">
             <ul class="menu menu-horizontal px-1">
-                <li><a href="#about" class="hover:text-yellow-400">About</a></li>
-                <li><a href="#status" class="hover:text-yellow-400">Status</a></li>
+                <li><a href="#status" class="hover:text-yellow-400">Contribution Status</a></li>
+                <li><a href="#details" class="hover:text-yellow-400">Contribution Details</a></li>
                 <li><a href="#contribute" class="hover:text-yellow-400">Contact Us</a></li>
             </ul>
         </div>
@@ -105,6 +105,7 @@
                 </a>
             </div>
         </div>
+
     </section>
 
     <!-- Contribution Status Section -->
@@ -158,7 +159,7 @@
     </section>
 
     <!-- Recent Contributions -->
-    <section class="py-16 bg-base-200">
+    <section id="details" class="py-16 bg-base-200">
         <div class="container mx-auto px-4">
             <div class="text-center mb-12">
                 <h2 class="text-4xl font-bold text-base-content mb-4">Recent Contributors</h2>
@@ -458,7 +459,7 @@
             // Show loading modal
             document.getElementById('loading_modal').showModal();
             
-            try {
+            {% comment %} try {
                 const response = await fetch('{% url "camp_meeting:contribute" %}', {
                     method: 'POST',
                     headers: {
@@ -490,11 +491,11 @@
                 document.getElementById('loading_modal').close();
                 document.getElementById('error_message').textContent = 'Network error. Please check your connection and try again.';
                 document.getElementById('error_modal').showModal();
-            }
+            } {% endcomment %}
         });
 
         // Update statistics
-        async function updateStats() {
+        {% comment %} async function updateStats() {
             try {
                 const response = await fetch('{% url "camp_meeting:stats" %}');
                 const data = await response.json();
@@ -515,7 +516,7 @@
             } catch (error) {
                 console.error('Error updating stats:', error);
             }
-        }
+        } {% endcomment %}
 
         // Update stats every 30 seconds
         setInterval(updateStats, 30000);
