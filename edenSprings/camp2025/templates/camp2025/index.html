@@ -206,31 +206,19 @@
                         <div class="card-body">
                             <h3 class="card-title text-2xl mb-6">Contribute via M-Pesa</h3>
                             
-                            {% csrf_token %}
                             <form id="contribution-form" class="space-y-4">
+                                {% csrf_token %}
                                 <div class="form-control">
-                                    <label class="label">
-                                        <span class="label-text font-medium">Full Name</span>
-                                    </label>
-                                    <input type="text" name="full_name" placeholder="Enter full name" 
-                                           class="input input-bordered w-full" required>
+                                    {{ form.full_name.label_tag }}
+                                    {{ form.full_name }}
                                 </div>
-                                
                                 <div class="form-control">
-                                    <label class="label">
-                                        <span class="label-text font-medium">M-Pesa Phone Number</span>
-                                    </label>
-                                    <input type="tel" name="phone_number" placeholder="0700000000" 
-                                           pattern="^(\+254|254|0)[17]\d{8}$"
-                                           class="input input-bordered w-full" required>
+                                    {{ form.phone_number.label_tag }}
+                                    {{ form.phone_number }}
                                 </div>
-                                
                                 <div class="form-control">
-                                    <label class="label">
-                                        <span class="label-text font-medium">Contribution Amount (KES)</span>
-                                    </label>
-                                    <input type="number" name="amount" placeholder="Enter amount" 
-                                           min="1" step="1" class="input input-bordered w-full" required>
+                                    {{ form.amount.label_tag }}
+                                    {{ form.amount }}
                                 </div>
                                 
                                 <div class="flex flex-wrap gap-2 mb-4">
